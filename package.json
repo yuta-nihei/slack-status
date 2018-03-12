@@ -1,0 +1,24 @@
+{
+  "name": "slack_status",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "current-path": "^2.0.0",
+    "display-notification": "^2.0.0",
+    "electron": "^1.8.3",
+    "fix-path": "^2.1.0",
+    "get-gulp-tasks": "^4.0.0",
+    "gulp": "^3.9.1",
+    "lodash": "^4.17.5",
+    "path": "^0.12.7",
+    "pkg-up": "^2.0.0",
+    "request": "^2.85.0"
+  }
+}
