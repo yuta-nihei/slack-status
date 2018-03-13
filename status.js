@@ -1,17 +1,17 @@
-'use strict';
 
-const gulp    = require('gulp');
+'use strict';
 const request = require('request');
 
+const slack_url   = "https://slack.com/api/users.profile.set"
 const token = "xxx"
 
-//席にいる場合
-gulp.task('active', function() {
+  
+function active () {
     const emoji = ":+1::skin-tone-4:";
     const text  = "席にいます";
     
     const options = {
-        url: 'https://slack.com/api/users.profile.set',
+        url: slack_url,
         method: 'POST',
         json: true,
         form: {
@@ -26,15 +26,14 @@ gulp.task('active', function() {
     request(options, function(error, response, body) {
         console.log(body);
     });
-});
+}
 
-// 離席中の場合
-gulp.task('offline', function() {
+function offline () {
     const emoji = ":seat:";
     const text  = "離席中";
-    
+
     const options = {
-        url: 'https://slack.com/api/users.profile.set',
+        url: slack_url,
         method: 'POST',
         json: true,
         form: {
@@ -45,19 +44,18 @@ gulp.task('offline', function() {
             })
         }
     };
-    
+
     request(options, function(error, response, body) {
         console.log(body);
     });
-});
+}
 
-//　外出中の場合
-gulp.task('out', function() {
+function out () {
     const emoji = ":car:";
     const text  = "外出中";
     
     const options = {
-        url: 'https://slack.com/api/users.profile.set',
+        url: slack_url,
         method: 'POST',
         json: true,
         form: {
@@ -72,6 +70,9 @@ gulp.task('out', function() {
     request(options, function(error, response, body) {
         console.log(body);
     });
-});
+}
 
 
+window.active = active;
+window.offline = offline;
+window.out = out;
