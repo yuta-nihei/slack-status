@@ -1,7 +1,8 @@
 const electron = require('electron');
 const app = electron.app;
 const BrowserWindow = electron.BrowserWindow;
-const Menu = electron.Menu
+const Menu = electron.Menu;
+const preference = require('electron-preference');
 
 let mainWindow = null;
 
@@ -11,30 +12,31 @@ app.on('ready', () => {
   // Electronに表示するhtmlを絶対パスで指定（相対パスだと動かない）
   mainWindow.loadURL('file://' + __dirname + '/index.html');
   initWindowMenu();
+  preference.load(__dirname + '/preference.json');
 
   mainWindow.on('closed', function() {
     mainWindow = null;
   });
 });
 
+
 function initWindowMenu(){
     const template = [
         {
-            label: 'リンク',
+            label: '環境設定',
             submenu: [
                 {
-                    label: 'Electron',
-                    click () { mainWindow.loadURL('https://www.kabanoki.net/category/electron'); }
+                    label: '環境設定',
+                    click () { preference.show(); }
                 }
             ]
         },
         {
-            label: '外部リンク',
+            label: '操作',
             submenu: [
-                {
-                    label: 'Google',
-                    click () { mainWindow.loadURL('https://www.google.co.jp/'); }
-                }
+				{ 
+					label: "ペースト", accelerator: "CmdOrCtrl+V", selector: "paste:" 
+				}
             ]
         }
     ]

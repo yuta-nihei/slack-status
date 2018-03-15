@@ -1,0 +1,13 @@
+[
+    {
+      "name":"Tab1",
+      "items":[
+      {
+        "name":"mytoken",
+        "text": "自分のトークン",
+        "description":"自分のトークンを入力してください",
+        "type": "text",
+        "default":"mytoken"
+      }]
+    }
+  ]
